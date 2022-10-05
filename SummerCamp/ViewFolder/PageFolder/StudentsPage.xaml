@@ -130,15 +130,15 @@
                         Style="{StaticResource InfoDataBaseFolse}"
                         Text="ФИО:"/>
                     <TextBox 
-                        Height="30" 
+                        Height="40" 
                         Width="350" 
                         Margin="0 5 0 5"/>
                     <TextBox 
-                        Height="30"
+                        Height="40"
                         Width="350"
                         Margin="0 5 0 5"/>
                     <TextBox
-                        Height="30"
+                        Height="40"
                         Width="350"
                         Margin="0 5 0 0"/>
                 </StackPanel>
@@ -150,7 +150,7 @@
                         HorizontalAlignment="Left"
                         Name="GroupComboBox"
                         DisplayMemberPath="NameGroup"
-                        Height="30" 
+                        Height="40" 
                         Width="240" 
                         Margin="0 5 0 5"/>
                     <TextBlock 
@@ -161,7 +161,7 @@
                         HorizontalAlignment="Left"
                         Name="CompetitionComboBox"
                         DisplayMemberPath="NameCompetition"
-                        Height="30"
+                        Height="40"
                         Width="240"
                         Margin="0 5 0 0"/>
                 </StackPanel>
@@ -171,8 +171,7 @@
                             Style="{StaticResource InfoDataBaseFolse}"
                             Text="БАЛЛЫ:"/>
                         <TextBox 
-                            HorizontalAlignment="Left"
-                            Height="30" 
+                            Height="40" 
                             Width="100" 
                             Margin="0 5 0 0"/>
                     </StackPanel>

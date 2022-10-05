@@ -7,7 +7,7 @@
         <!--#region Windows-->
         <Style TargetType="Window" x:Key="StyleWindows">
             <Setter Property="Height" Value="700"/>
-            <Setter Property="Width" Value="1200"/>
+            <Setter Property="Width" Value="1400"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="ResizeMode" Value="NoResize"/>
             <Setter Property="AllowsTransparency" Value="True"/>
@@ -128,6 +128,51 @@
                                 <Setter Property="BorderBrush" Value="red"/>
                                 <Setter Property="BorderThickness" Value="2"/>
                                 <Setter Property="Foreground" Value="#cccccc"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
+        <!--#region TextBox-->
+        <Style TargetType="TextBox">
+            <Setter Property="Cursor" Value="IBeam"/>
+            <Setter Property="FontFamily" Value="\Content\FontFolder\#Neucha"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="#cccccc"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="CaretBrush" Value="#cccccc"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border 
+                            x:Name="border"
+                            CornerRadius="15"
+                            BorderBrush="#3A4750"
+                            BorderThickness="2"
+                            Background="#0f1214"
+                            >
+                            <ScrollViewer 
+                            x:Name="PART_ContentHost"
+                            Focusable="false"
+                            HorizontalScrollBarVisibility="Hidden"
+                            VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#D72323"/>
+                                <Setter Property="Background" TargetName="border" Value="#0f1214"/>
+                                <Setter Property="Foreground" Value="#cccccc"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter Property="Foreground" Value="#D72323" />
+                                <Setter Property="BorderBrush" TargetName="border" Value="#D72323"/>
+                                <Setter Property="Background" TargetName="border" Value="#303841"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
