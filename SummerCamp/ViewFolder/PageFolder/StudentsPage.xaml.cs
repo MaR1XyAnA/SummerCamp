@@ -73,6 +73,9 @@ namespace SummerCamp.ViewFolder.PageFolder
                     CompetitionStudentsComboBox.Text = null;
                     ScoresStudentsTextBox.Text = null;
                     MessageBox.Show("УСПЕШНО СОХРАНЕНО");
+                    NewStudentsBorder.Visibility = Visibility.Collapsed;
+                    NewStudentsButton.Visibility = Visibility.Visible;
+                    StudentsListListBox.Visibility = Visibility.Visible;
                 }
                 catch (Exception ex)
                 {
