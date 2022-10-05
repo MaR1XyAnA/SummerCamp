@@ -14,6 +14,17 @@
             </Grid.RowDefinitions>
             <Border Background="#303841" CornerRadius="20 20 0 0"/>
             <Grid Background="Transparent" x:Name="SpaseBarGrid" MouseDown="SpaseBarGrid_MouseDown">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Image
+                        Source="\Content\Image\SummerCampIcons.png"
+                        Height="20"
+                        Width="20"
+                        Margin="20 0 0 0"/>
+                    <TextBlock 
+                        Style="{StaticResource StyleTextBlock}"
+                        Margin="10 0 0 0" 
+                        Text="SummerCamp"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Button 
                         ToolTip="СВЕРНУТЬ"

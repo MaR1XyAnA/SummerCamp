@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище SummerCampDataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище SummerCampDataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CompetitionTables">
           <Key>
             <PropertyRef Name="NameCompetition" />
@@ -133,77 +133,101 @@
             <End Role="StudentsTables" EntitySet="StudentsTables" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SummerCampDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SummerCampDataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompetitionTables" EntityType="SummerCampDataBaseModel.CompetitionTables" />
+          <EntitySet Name="GroupTables" EntityType="SummerCampDataBaseModel.GroupTables" />
+          <EntitySet Name="PhotoPageTable" EntityType="SummerCampDataBaseModel.PhotoPageTable" />
+          <EntitySet Name="SpecializationTable" EntityType="SummerCampDataBaseModel.SpecializationTable" />
+          <EntitySet Name="StatusTables" EntityType="SummerCampDataBaseModel.StatusTables" />
+          <EntitySet Name="StudentsTables" EntityType="SummerCampDataBaseModel.StudentsTables" />
+          <EntitySet Name="sysdiagrams" EntityType="SummerCampDataBaseModel.sysdiagrams" />
+          <AssociationSet Name="FK_CompetitionTables_StatusTables" Association="SummerCampDataBaseModel.FK_CompetitionTables_StatusTables">
+            <End Role="StatusTables" EntitySet="StatusTables" />
+            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsTables_CompetitionTables" Association="SummerCampDataBaseModel.FK_StudentsTables_CompetitionTables">
+            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
+            <End Role="StudentsTables" EntitySet="StudentsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTables_SpecializationTable" Association="SummerCampDataBaseModel.FK_GroupTables_SpecializationTable">
+            <End Role="SpecializationTable" EntitySet="SpecializationTable" />
+            <End Role="GroupTables" EntitySet="GroupTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsTables_GroupTables" Association="SummerCampDataBaseModel.FK_StudentsTables_GroupTables">
+            <End Role="GroupTables" EntitySet="GroupTables" />
+            <End Role="StudentsTables" EntitySet="StudentsTables" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CompetitionTables">
           <Key>
             <PropertyRef Name="NameCompetition" />
           </Key>
-          <Property Name="NameCompetition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StatusCompetition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="StatusTables" Relationship="Self.FK_CompetitionTables_StatusTables" FromRole="CompetitionTables" ToRole="StatusTables" />
-          <NavigationProperty Name="StudentsTables" Relationship="Self.FK_StudentsTables_CompetitionTables" FromRole="CompetitionTables" ToRole="StudentsTables" />
+          <Property Name="NameCompetition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusCompetition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StatusTables" Relationship="SummerCampDataBaseModel.FK_CompetitionTables_StatusTables" FromRole="CompetitionTables" ToRole="StatusTables" />
+          <NavigationProperty Name="StudentsTables" Relationship="SummerCampDataBaseModel.FK_StudentsTables_CompetitionTables" FromRole="CompetitionTables" ToRole="StudentsTables" />
         </EntityType>
         <EntityType Name="GroupTables">
           <Key>
             <PropertyRef Name="NameGroup" />
           </Key>
-          <Property Name="NameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NameSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SpecializationTable" Relationship="Self.FK_GroupTables_SpecializationTable" FromRole="GroupTables" ToRole="SpecializationTable" />
-          <NavigationProperty Name="StudentsTables" Relationship="Self.FK_StudentsTables_GroupTables" FromRole="GroupTables" ToRole="StudentsTables" />
+          <Property Name="NameGroup" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameSpecialization" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SpecializationTable" Relationship="SummerCampDataBaseModel.FK_GroupTables_SpecializationTable" FromRole="GroupTables" ToRole="SpecializationTable" />
+          <NavigationProperty Name="StudentsTables" Relationship="SummerCampDataBaseModel.FK_StudentsTables_GroupTables" FromRole="GroupTables" ToRole="StudentsTables" />
         </EntityType>
         <EntityType Name="PhotoPageTable">
           <Key>
             <PropertyRef Name="NamePhoto" />
           </Key>
-          <Property Name="NamePhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="NamePhoto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="SpecializationTable">
           <Key>
             <PropertyRef Name="NameSpecialization" />
           </Key>
-          <Property Name="NameSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="GroupTables" Relationship="Self.FK_GroupTables_SpecializationTable" FromRole="SpecializationTable" ToRole="GroupTables" />
+          <Property Name="NameSpecialization" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GroupTables" Relationship="SummerCampDataBaseModel.FK_GroupTables_SpecializationTable" FromRole="SpecializationTable" ToRole="GroupTables" />
         </EntityType>
         <EntityType Name="StatusTables">
           <Key>
             <PropertyRef Name="NameStatus" />
           </Key>
-          <Property Name="NameStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CompetitionTables" Relationship="Self.FK_CompetitionTables_StatusTables" FromRole="StatusTables" ToRole="CompetitionTables" />
+          <Property Name="NameStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompetitionTables" Relationship="SummerCampDataBaseModel.FK_CompetitionTables_StatusTables" FromRole="StatusTables" ToRole="CompetitionTables" />
         </EntityType>
         <EntityType Name="StudentsTables">
           <Key>
             <PropertyRef Name="PersonalNumberStudents" />
           </Key>
           <Property Name="PersonalNumberStudents" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SurnameStudents" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NameStudents" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurnameStudents" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameStudents" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NameCompetition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Scores" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <NavigationProperty Name="CompetitionTables" Relationship="Self.FK_StudentsTables_CompetitionTables" FromRole="StudentsTables" ToRole="CompetitionTables" />
-          <NavigationProperty Name="GroupTables" Relationship="Self.FK_StudentsTables_GroupTables" FromRole="StudentsTables" ToRole="GroupTables" />
+          <Property Name="NameGroup" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameCompetition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Scores" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <NavigationProperty Name="CompetitionTables" Relationship="SummerCampDataBaseModel.FK_StudentsTables_CompetitionTables" FromRole="StudentsTables" ToRole="CompetitionTables" />
+          <NavigationProperty Name="GroupTables" Relationship="SummerCampDataBaseModel.FK_StudentsTables_GroupTables" FromRole="StudentsTables" ToRole="GroupTables" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_CompetitionTables_StatusTables">
-          <End Role="StatusTables" Type="Self.StatusTables" Multiplicity="1" />
-          <End Role="CompetitionTables" Type="Self.CompetitionTables" Multiplicity="*" />
+          <End Type="SummerCampDataBaseModel.StatusTables" Role="StatusTables" Multiplicity="1" />
+          <End Type="SummerCampDataBaseModel.CompetitionTables" Role="CompetitionTables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StatusTables">
               <PropertyRef Name="NameStatus" />
@@ -214,8 +238,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StudentsTables_CompetitionTables">
-          <End Role="CompetitionTables" Type="Self.CompetitionTables" Multiplicity="1" />
-          <End Role="StudentsTables" Type="Self.StudentsTables" Multiplicity="*" />
+          <End Type="SummerCampDataBaseModel.CompetitionTables" Role="CompetitionTables" Multiplicity="1" />
+          <End Type="SummerCampDataBaseModel.StudentsTables" Role="StudentsTables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompetitionTables">
               <PropertyRef Name="NameCompetition" />
@@ -226,8 +250,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GroupTables_SpecializationTable">
-          <End Role="SpecializationTable" Type="Self.SpecializationTable" Multiplicity="1" />
-          <End Role="GroupTables" Type="Self.GroupTables" Multiplicity="*" />
+          <End Type="SummerCampDataBaseModel.SpecializationTable" Role="SpecializationTable" Multiplicity="1" />
+          <End Type="SummerCampDataBaseModel.GroupTables" Role="GroupTables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SpecializationTable">
               <PropertyRef Name="NameSpecialization" />
@@ -238,8 +262,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StudentsTables_GroupTables">
-          <End Role="GroupTables" Type="Self.GroupTables" Multiplicity="1" />
-          <End Role="StudentsTables" Type="Self.StudentsTables" Multiplicity="*" />
+          <End Type="SummerCampDataBaseModel.GroupTables" Role="GroupTables" Multiplicity="1" />
+          <End Type="SummerCampDataBaseModel.StudentsTables" Role="StudentsTables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GroupTables">
               <PropertyRef Name="NameGroup" />
@@ -249,31 +273,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SummerCampDataBaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CompetitionTables" EntityType="Self.CompetitionTables" />
-          <EntitySet Name="GroupTables" EntityType="Self.GroupTables" />
-          <EntitySet Name="PhotoPageTable" EntityType="Self.PhotoPageTable" />
-          <EntitySet Name="SpecializationTable" EntityType="Self.SpecializationTable" />
-          <EntitySet Name="StatusTables" EntityType="Self.StatusTables" />
-          <EntitySet Name="StudentsTables" EntityType="Self.StudentsTables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_CompetitionTables_StatusTables" Association="Self.FK_CompetitionTables_StatusTables">
-            <End Role="StatusTables" EntitySet="StatusTables" />
-            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentsTables_CompetitionTables" Association="Self.FK_StudentsTables_CompetitionTables">
-            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
-            <End Role="StudentsTables" EntitySet="StudentsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GroupTables_SpecializationTable" Association="Self.FK_GroupTables_SpecializationTable">
-            <End Role="SpecializationTable" EntitySet="SpecializationTable" />
-            <End Role="GroupTables" EntitySet="GroupTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentsTables_GroupTables" Association="Self.FK_StudentsTables_GroupTables">
-            <End Role="GroupTables" EntitySet="GroupTables" />
-            <End Role="StudentsTables" EntitySet="StudentsTables" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -283,24 +282,24 @@
           <EntitySetMapping Name="CompetitionTables">
             <EntityTypeMapping TypeName="SummerCampDataBaseModel.CompetitionTables">
               <MappingFragment StoreEntitySet="CompetitionTables">
-                <ScalarProperty Name="NameCompetition" ColumnName="NameCompetition" />
                 <ScalarProperty Name="StatusCompetition" ColumnName="StatusCompetition" />
+                <ScalarProperty Name="NameCompetition" ColumnName="NameCompetition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroupTables">
             <EntityTypeMapping TypeName="SummerCampDataBaseModel.GroupTables">
               <MappingFragment StoreEntitySet="GroupTables">
-                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
                 <ScalarProperty Name="NameSpecialization" ColumnName="NameSpecialization" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhotoPageTable">
             <EntityTypeMapping TypeName="SummerCampDataBaseModel.PhotoPageTable">
               <MappingFragment StoreEntitySet="PhotoPageTable">
-                <ScalarProperty Name="NamePhoto" ColumnName="NamePhoto" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="NamePhoto" ColumnName="NamePhoto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -321,24 +320,24 @@
           <EntitySetMapping Name="StudentsTables">
             <EntityTypeMapping TypeName="SummerCampDataBaseModel.StudentsTables">
               <MappingFragment StoreEntitySet="StudentsTables">
-                <ScalarProperty Name="PersonalNumberStudents" ColumnName="PersonalNumberStudents" />
-                <ScalarProperty Name="SurnameStudents" ColumnName="SurnameStudents" />
-                <ScalarProperty Name="NameStudents" ColumnName="NameStudents" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
-                <ScalarProperty Name="NameCompetition" ColumnName="NameCompetition" />
                 <ScalarProperty Name="Scores" ColumnName="Scores" />
+                <ScalarProperty Name="NameCompetition" ColumnName="NameCompetition" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="NameStudents" ColumnName="NameStudents" />
+                <ScalarProperty Name="SurnameStudents" ColumnName="SurnameStudents" />
+                <ScalarProperty Name="PersonalNumberStudents" ColumnName="PersonalNumberStudents" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="SummerCampDataBaseModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

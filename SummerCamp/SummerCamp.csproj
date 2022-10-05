@@ -134,6 +134,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelCamp.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Content\FontFolder\RussianPunk.ttf" />
+    <Resource Include="Content\FontFolder\Neucha-Regular.ttf" />
     <None Include="ModelFolder\ModelCamp.edmx.diagram">
       <DependentUpon>ModelCamp.edmx</DependentUpon>
     </None>
