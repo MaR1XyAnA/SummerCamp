@@ -1,0 +1,164 @@
+﻿<Page x:Class="SummerCamp.ViewFolder.PageFolder.StudentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SummerCamp.ViewFolder.PageFolder"
+      mc:Ignorable="d" 
+      Style="{StaticResource StylePage}">
+    <StackPanel>
+        <StackPanel Margin="20">
+            <Button 
+                Height="50"
+                Width="230" 
+                Margin="10"
+                HorizontalAlignment="Right"
+                Content="ДОБАВИТЬ СТУДЕНТА"/>
+        </StackPanel>
+    <ListBox
+        Visibility="Collapsed"
+        VirtualizingPanel.ScrollUnit="Pixel"
+        x:Name="StudentsListListBox"
+        Background="#19443B50"
+        BorderBrush="Transparent"
+        BorderThickness="0">
+        <ListBox.ItemContainerStyle>
+            <Style TargetType="ListBoxItem">
+                <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <ContentPresenter/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </ListBox.ItemContainerStyle>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Height="Auto" CornerRadius="0" Width="680" BorderBrush="Transparent">
+                    <Grid Background="#4C443B50">
+                        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="ФИО:" 
+                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                <TextBlock 
+                                    Margin="10 0 0 0"
+                                    Text="{Binding SurnameStudents}" 
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                <TextBlock 
+                                    Margin="5 0 0 0" 
+                                    Text="{Binding NameStudents}"
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                <TextBlock 
+                                    Margin="5 0 0 0" 
+                                    Text="{Binding MiddleName}" 
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="ГРУППА:" 
+                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                <TextBlock 
+                                    Margin="10 0 0 0"
+                                    Text="{Binding GroupTables.NameGroup}" 
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="СПЕЦИАЛИЗАЦИЯ:" 
+                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                <TextBlock 
+                                    Margin="10 0 0 0"
+                                    Text="{Binding GroupTables.SpecializationTable.NameSpecialization}" 
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="КОНКУРС:" 
+                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                <TextBlock 
+                                    Margin="10 0 0 0"
+                                    Text="{Binding CompetitionTables.NameCompetition}" 
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="СТАТУС:" 
+                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                <TextBlock 
+                                    Margin="10 0 0 0"
+                                    Text="{Binding CompetitionTables.StatusTables.NameStatus}" 
+                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
+                            <TextBlock
+                                Text="БАЛЛЫ:" 
+                                FontSize="30"
+                                Style="{StaticResource InfoDataBaseFolse}"/>
+                            <TextBlock 
+                                Margin="10 0 0 0"
+                                FontSize="30"
+                                Text="{Binding Scores}" 
+                                Style="{StaticResource InfoDataBaseTrue}"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Vertical">
+            <StackPanel Margin="10 0 0 0">
+                <TextBlock 
+                    Style="{StaticResource InfoDataBaseFolse}"
+                    Text="ФИО:"/>
+                <TextBox 
+                    Height="30" 
+                    Width="350" 
+                    Margin="0 5 0 5"/>
+                <TextBox 
+                    Height="30"
+                    Width="350"
+                    Margin="0 5 0 5"/>
+                <TextBox
+                    Height="30"
+                    Width="350"
+                    Margin="0 5 0 0"/>
+            </StackPanel>
+            <StackPanel Margin="10 10 0 0">
+                <TextBlock 
+                    Style="{StaticResource InfoDataBaseFolse}"
+                    Text="ГРУППА:"/>
+                <ComboBox 
+                    Height="30" 
+                    Width="240" 
+                    Margin="0 5 0 5"/>
+                <TextBlock 
+                    Margin="0 18.1 0 0"
+                    Style="{StaticResource InfoDataBaseFolse}"
+                    Text="СПЕЦИАЛИЗАЦИЯ:"/>
+                <ComboBox
+                    Height="30"
+                    Width="240"
+                    Margin="0 5 0 0"/>
+            </StackPanel>
+            <StackPanel Margin="10 10 0 10">
+                <TextBlock 
+                    Style="{StaticResource InfoDataBaseFolse}"
+                    Text="БАЛЛЫ:"/>
+                <TextBox 
+                    HorizontalAlignment="Left"
+                    Height="30" 
+                    Width="100" 
+                    Margin="0 5 0 0"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>

@@ -108,6 +108,9 @@
     <Compile Include="ViewFolder\PageFolder\PhotoPage.xaml.cs">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewFolder\PageFolder\StudentsPage.xaml.cs">
+      <DependentUpon>StudentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewFolder\WindowsFolder\MainWindows.xaml.cs">
       <DependentUpon>MainWindows.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ViewFolder\PageFolder\PhotoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewFolder\PageFolder\StudentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

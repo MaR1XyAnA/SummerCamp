@@ -51,6 +51,7 @@ namespace SummerCamp.ViewFolder.WindowsFolder
             GroupListButton.IsChecked = false;
             CompetitionListBitton.IsChecked = false;
             TapeListButton.IsChecked = false;
+            MainFrame.Navigate(new PhotoPage());
         }
 
         private void StudentsListButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,7 @@ namespace SummerCamp.ViewFolder.WindowsFolder
             GroupListButton.IsChecked = false;
             CompetitionListBitton.IsChecked = false;
             TapeListButton.IsChecked = false;
+            MainFrame.Navigate(new StudentsPage());
         }
 
         private void GroupListButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +69,7 @@ namespace SummerCamp.ViewFolder.WindowsFolder
             StudentsListButton.IsChecked = false;
             CompetitionListBitton.IsChecked = false;
             TapeListButton.IsChecked = false;
+            //MainFrame.Navigate(new ());
         }
 
         private void CompetitionListBitton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +78,7 @@ namespace SummerCamp.ViewFolder.WindowsFolder
             StudentsListButton.IsChecked = false;
             GroupListButton.IsChecked = false;
             TapeListButton.IsChecked = false;
+            //MainFrame.Navigate(new ());
         }
 
         private void TapeListButton_Click(object sender, RoutedEventArgs e)
@@ -83,6 +87,7 @@ namespace SummerCamp.ViewFolder.WindowsFolder
             StudentsListButton.IsChecked = false;
             GroupListButton.IsChecked = false;
             CompetitionListBitton.IsChecked = false;
+            //MainFrame.Navigate(new ());
         }
     }
 }
