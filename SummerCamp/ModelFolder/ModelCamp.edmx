@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SummerCampDataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CompetitionTables">
+          <Key>
+            <PropertyRef Name="NameCompetition" />
+          </Key>
+          <Property Name="NameCompetition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusCompetition" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupTables">
+          <Key>
+            <PropertyRef Name="NameGroup" />
+          </Key>
+          <Property Name="NameGroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameSpecialization" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhotoPageTable">
+          <Key>
+            <PropertyRef Name="NamePhoto" />
+          </Key>
+          <Property Name="NamePhoto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecializationTable">
+          <Key>
+            <PropertyRef Name="NameSpecialization" />
+          </Key>
+          <Property Name="NameSpecialization" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusTables">
+          <Key>
+            <PropertyRef Name="NameStatus" />
+          </Key>
+          <Property Name="NameStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentsTables">
+          <Key>
+            <PropertyRef Name="PersonalNumberStudents" />
+          </Key>
+          <Property Name="PersonalNumberStudents" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurnameStudents" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameStudents" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameGroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameCompetition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Scores" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CompetitionTables_StatusTables">
+          <End Role="StatusTables" Type="Self.StatusTables" Multiplicity="1" />
+          <End Role="CompetitionTables" Type="Self.CompetitionTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTables">
+              <PropertyRef Name="NameStatus" />
+            </Principal>
+            <Dependent Role="CompetitionTables">
+              <PropertyRef Name="StatusCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupTables_SpecializationTable">
+          <End Role="SpecializationTable" Type="Self.SpecializationTable" Multiplicity="1" />
+          <End Role="GroupTables" Type="Self.GroupTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecializationTable">
+              <PropertyRef Name="NameSpecialization" />
+            </Principal>
+            <Dependent Role="GroupTables">
+              <PropertyRef Name="NameSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsTables_CompetitionTables">
+          <End Role="CompetitionTables" Type="Self.CompetitionTables" Multiplicity="1" />
+          <End Role="StudentsTables" Type="Self.StudentsTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionTables">
+              <PropertyRef Name="NameCompetition" />
+            </Principal>
+            <Dependent Role="StudentsTables">
+              <PropertyRef Name="NameCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsTables_GroupTables">
+          <End Role="GroupTables" Type="Self.GroupTables" Multiplicity="1" />
+          <End Role="StudentsTables" Type="Self.StudentsTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTables">
+              <PropertyRef Name="NameGroup" />
+            </Principal>
+            <Dependent Role="StudentsTables">
+              <PropertyRef Name="NameGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SummerCampDataBaseModelContainer">
+          <EntitySet Name="CompetitionTables" EntityType="Self.CompetitionTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupTables" EntityType="Self.GroupTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoPageTable" EntityType="Self.PhotoPageTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecializationTable" EntityType="Self.SpecializationTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusTables" EntityType="Self.StatusTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentsTables" EntityType="Self.StudentsTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CompetitionTables_StatusTables" Association="Self.FK_CompetitionTables_StatusTables">
+            <End Role="StatusTables" EntitySet="StatusTables" />
+            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTables_SpecializationTable" Association="Self.FK_GroupTables_SpecializationTable">
+            <End Role="SpecializationTable" EntitySet="SpecializationTable" />
+            <End Role="GroupTables" EntitySet="GroupTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsTables_CompetitionTables" Association="Self.FK_StudentsTables_CompetitionTables">
+            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
+            <End Role="StudentsTables" EntitySet="StudentsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsTables_GroupTables" Association="Self.FK_StudentsTables_GroupTables">
+            <End Role="GroupTables" EntitySet="GroupTables" />
+            <End Role="StudentsTables" EntitySet="StudentsTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SummerCampDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompetitionTables">
+          <Key>
+            <PropertyRef Name="NameCompetition" />
+          </Key>
+          <Property Name="NameCompetition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusCompetition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StatusTables" Relationship="Self.FK_CompetitionTables_StatusTables" FromRole="CompetitionTables" ToRole="StatusTables" />
+          <NavigationProperty Name="StudentsTables" Relationship="Self.FK_StudentsTables_CompetitionTables" FromRole="CompetitionTables" ToRole="StudentsTables" />
+        </EntityType>
+        <EntityType Name="GroupTables">
+          <Key>
+            <PropertyRef Name="NameGroup" />
+          </Key>
+          <Property Name="NameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SpecializationTable" Relationship="Self.FK_GroupTables_SpecializationTable" FromRole="GroupTables" ToRole="SpecializationTable" />
+          <NavigationProperty Name="StudentsTables" Relationship="Self.FK_StudentsTables_GroupTables" FromRole="GroupTables" ToRole="StudentsTables" />
+        </EntityType>
+        <EntityType Name="PhotoPageTable">
+          <Key>
+            <PropertyRef Name="NamePhoto" />
+          </Key>
+          <Property Name="NamePhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecializationTable">
+          <Key>
+            <PropertyRef Name="NameSpecialization" />
+          </Key>
+          <Property Name="NameSpecialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GroupTables" Relationship="Self.FK_GroupTables_SpecializationTable" FromRole="SpecializationTable" ToRole="GroupTables" />
+        </EntityType>
+        <EntityType Name="StatusTables">
+          <Key>
+            <PropertyRef Name="NameStatus" />
+          </Key>
+          <Property Name="NameStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CompetitionTables" Relationship="Self.FK_CompetitionTables_StatusTables" FromRole="StatusTables" ToRole="CompetitionTables" />
+        </EntityType>
+        <EntityType Name="StudentsTables">
+          <Key>
+            <PropertyRef Name="PersonalNumberStudents" />
+          </Key>
+          <Property Name="PersonalNumberStudents" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurnameStudents" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameStudents" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameCompetition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Scores" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="CompetitionTables" Relationship="Self.FK_StudentsTables_CompetitionTables" FromRole="StudentsTables" ToRole="CompetitionTables" />
+          <NavigationProperty Name="GroupTables" Relationship="Self.FK_StudentsTables_GroupTables" FromRole="StudentsTables" ToRole="GroupTables" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_CompetitionTables_StatusTables">
+          <End Role="StatusTables" Type="Self.StatusTables" Multiplicity="1" />
+          <End Role="CompetitionTables" Type="Self.CompetitionTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTables">
+              <PropertyRef Name="NameStatus" />
+            </Principal>
+            <Dependent Role="CompetitionTables">
+              <PropertyRef Name="StatusCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsTables_CompetitionTables">
+          <End Role="CompetitionTables" Type="Self.CompetitionTables" Multiplicity="1" />
+          <End Role="StudentsTables" Type="Self.StudentsTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompetitionTables">
+              <PropertyRef Name="NameCompetition" />
+            </Principal>
+            <Dependent Role="StudentsTables">
+              <PropertyRef Name="NameCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupTables_SpecializationTable">
+          <End Role="SpecializationTable" Type="Self.SpecializationTable" Multiplicity="1" />
+          <End Role="GroupTables" Type="Self.GroupTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecializationTable">
+              <PropertyRef Name="NameSpecialization" />
+            </Principal>
+            <Dependent Role="GroupTables">
+              <PropertyRef Name="NameSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsTables_GroupTables">
+          <End Role="GroupTables" Type="Self.GroupTables" Multiplicity="1" />
+          <End Role="StudentsTables" Type="Self.StudentsTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupTables">
+              <PropertyRef Name="NameGroup" />
+            </Principal>
+            <Dependent Role="StudentsTables">
+              <PropertyRef Name="NameGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SummerCampDataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompetitionTables" EntityType="Self.CompetitionTables" />
+          <EntitySet Name="GroupTables" EntityType="Self.GroupTables" />
+          <EntitySet Name="PhotoPageTable" EntityType="Self.PhotoPageTable" />
+          <EntitySet Name="SpecializationTable" EntityType="Self.SpecializationTable" />
+          <EntitySet Name="StatusTables" EntityType="Self.StatusTables" />
+          <EntitySet Name="StudentsTables" EntityType="Self.StudentsTables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_CompetitionTables_StatusTables" Association="Self.FK_CompetitionTables_StatusTables">
+            <End Role="StatusTables" EntitySet="StatusTables" />
+            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsTables_CompetitionTables" Association="Self.FK_StudentsTables_CompetitionTables">
+            <End Role="CompetitionTables" EntitySet="CompetitionTables" />
+            <End Role="StudentsTables" EntitySet="StudentsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupTables_SpecializationTable" Association="Self.FK_GroupTables_SpecializationTable">
+            <End Role="SpecializationTable" EntitySet="SpecializationTable" />
+            <End Role="GroupTables" EntitySet="GroupTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsTables_GroupTables" Association="Self.FK_StudentsTables_GroupTables">
+            <End Role="GroupTables" EntitySet="GroupTables" />
+            <End Role="StudentsTables" EntitySet="StudentsTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SummerCampDataBaseModelContainer" CdmEntityContainer="SummerCampDataBaseEntities">
+          <EntitySetMapping Name="CompetitionTables">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.CompetitionTables">
+              <MappingFragment StoreEntitySet="CompetitionTables">
+                <ScalarProperty Name="NameCompetition" ColumnName="NameCompetition" />
+                <ScalarProperty Name="StatusCompetition" ColumnName="StatusCompetition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupTables">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.GroupTables">
+              <MappingFragment StoreEntitySet="GroupTables">
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="NameSpecialization" ColumnName="NameSpecialization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoPageTable">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.PhotoPageTable">
+              <MappingFragment StoreEntitySet="PhotoPageTable">
+                <ScalarProperty Name="NamePhoto" ColumnName="NamePhoto" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecializationTable">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.SpecializationTable">
+              <MappingFragment StoreEntitySet="SpecializationTable">
+                <ScalarProperty Name="NameSpecialization" ColumnName="NameSpecialization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTables">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.StatusTables">
+              <MappingFragment StoreEntitySet="StatusTables">
+                <ScalarProperty Name="NameStatus" ColumnName="NameStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsTables">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.StudentsTables">
+              <MappingFragment StoreEntitySet="StudentsTables">
+                <ScalarProperty Name="PersonalNumberStudents" ColumnName="PersonalNumberStudents" />
+                <ScalarProperty Name="SurnameStudents" ColumnName="SurnameStudents" />
+                <ScalarProperty Name="NameStudents" ColumnName="NameStudents" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="NameCompetition" ColumnName="NameCompetition" />
+                <ScalarProperty Name="Scores" ColumnName="Scores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SummerCampDataBaseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
