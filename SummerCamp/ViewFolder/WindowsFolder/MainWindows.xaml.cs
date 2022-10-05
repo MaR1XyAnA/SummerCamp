@@ -21,8 +21,8 @@ namespace SummerCamp.ViewFolder.WindowsFolder
         {
             InitializeComponent();
             MainFrame.Navigate(new PhotoPage());
-            MainListButton.FontWeight = FontWeights.Bold;
-            MainListButton.Foreground = new SolidColorBrush(Color.FromRgb(215, 35, 35));
+            MainListButton.IsChecked = true;
+
 
         }
         #region WindowsEddit
@@ -47,72 +47,42 @@ namespace SummerCamp.ViewFolder.WindowsFolder
 
         private void MainListButton_Click(object sender, RoutedEventArgs e)
         {
-            MainListButton.FontWeight = FontWeights.Bold;
-            MainListButton.Foreground = new SolidColorBrush(Color.FromRgb(215, 35, 35));
-            StudentsListButton.FontWeight = FontWeights.Normal;
-            StudentsListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            GroupListButton.FontWeight = FontWeights.Normal;
-            GroupListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            CompetitionListBitton.FontWeight = FontWeights.Normal;
-            CompetitionListBitton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            TapeListButton.FontWeight = FontWeights.Normal;
-            TapeListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
+            StudentsListButton.IsChecked = false;
+            GroupListButton.IsChecked = false;
+            CompetitionListBitton.IsChecked = false;
+            TapeListButton.IsChecked = false;
         }
 
         private void StudentsListButton_Click(object sender, RoutedEventArgs e)
         {
-            MainListButton.FontWeight = FontWeights.Normal;
-            MainListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            StudentsListButton.FontWeight = FontWeights.Bold;
-            StudentsListButton.Foreground = new SolidColorBrush(Color.FromRgb(215, 35, 35));
-            GroupListButton.FontWeight = FontWeights.Normal;
-            GroupListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            CompetitionListBitton.FontWeight = FontWeights.Normal;
-            CompetitionListBitton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            TapeListButton.FontWeight = FontWeights.Normal;
-            TapeListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
+            MainListButton.IsChecked = false;
+            GroupListButton.IsChecked = false;
+            CompetitionListBitton.IsChecked = false;
+            TapeListButton.IsChecked = false;
         }
 
         private void GroupListButton_Click(object sender, RoutedEventArgs e)
         {
-            MainListButton.FontWeight = FontWeights.Normal;
-            MainListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            StudentsListButton.FontWeight = FontWeights.Normal;
-            StudentsListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            GroupListButton.FontWeight = FontWeights.Bold;
-            GroupListButton.Foreground = new SolidColorBrush(Color.FromRgb(215, 35, 35));
-            CompetitionListBitton.FontWeight = FontWeights.Normal;
-            CompetitionListBitton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            TapeListButton.FontWeight = FontWeights.Normal;
-            TapeListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
+            MainListButton.IsChecked = false;
+            StudentsListButton.IsChecked = false;
+            CompetitionListBitton.IsChecked = false;
+            TapeListButton.IsChecked = false;
         }
 
         private void CompetitionListBitton_Click(object sender, RoutedEventArgs e)
         {
-            MainListButton.FontWeight = FontWeights.Normal;
-            MainListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            StudentsListButton.FontWeight = FontWeights.Normal;
-            StudentsListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            GroupListButton.FontWeight = FontWeights.Normal;
-            GroupListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            CompetitionListBitton.FontWeight = FontWeights.Bold;
-            CompetitionListBitton.Foreground = new SolidColorBrush(Color.FromRgb(215, 35, 35));
-            TapeListButton.FontWeight = FontWeights.Normal;
-            TapeListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
+            MainListButton.IsChecked = false;
+            StudentsListButton.IsChecked = false;
+            GroupListButton.IsChecked = false;
+            TapeListButton.IsChecked = false;
         }
 
         private void TapeListButton_Click(object sender, RoutedEventArgs e)
         {
-            MainListButton.FontWeight = FontWeights.Normal;
-            MainListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            StudentsListButton.FontWeight = FontWeights.Normal;
-            StudentsListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            GroupListButton.FontWeight = FontWeights.Normal;
-            GroupListButton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            CompetitionListBitton.FontWeight = FontWeights.Normal;
-            CompetitionListBitton.Foreground = new SolidColorBrush(Color.FromRgb(238, 238, 238));
-            TapeListButton.FontWeight = FontWeights.Bold;
-            TapeListButton.Foreground = new SolidColorBrush(Color.FromRgb(215, 35, 35));
+            MainListButton.IsChecked = false;
+            StudentsListButton.IsChecked = false;
+            GroupListButton.IsChecked = false;
+            CompetitionListBitton.IsChecked = false;
         }
     }
 }

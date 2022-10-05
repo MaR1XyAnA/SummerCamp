@@ -165,6 +165,7 @@
     <Resource Include="Content\Image\SummerCampIcons.png" />
   </ItemGroup>
   <ItemGroup>
+    <SplashScreen Include="Content\Image\StartImage.png" />
     <Content Include="ModelFolder\ModelCamp.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelCamp.Context.cs</LastGenOutput>

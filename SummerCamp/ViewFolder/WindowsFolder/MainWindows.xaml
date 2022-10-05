@@ -59,31 +59,31 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" Margin="0 20 10 0" CornerRadius="20" VerticalAlignment="Top" Height="Auto" HorizontalAlignment="Right" BorderBrush="#33EEEEEE" BorderThickness="1">
                     <StackPanel Width="150" Margin="10 10 20 10" HorizontalAlignment="Left">
-                        <Button 
+                        <ToggleButton 
                             Margin="0 0 0 5" 
                             Content="ГЛАВНАЯ" 
                             Style="{StaticResource TextButton}"
                             x:Name="MainListButton"
                             Click="MainListButton_Click"/>
-                        <Button 
+                        <ToggleButton 
                             Margin="0 5 0 5"
                             Content="СТУДЕНТЫ" 
                             Style="{StaticResource TextButton}"
                             x:Name="StudentsListButton"
                             Click="StudentsListButton_Click"/>
-                        <Button 
+                        <ToggleButton 
                             Margin="0 5 0 5"  
                             Content="ГРУППЫ" 
                             Style="{StaticResource TextButton}"
                             x:Name="GroupListButton"
                             Click="GroupListButton_Click"/>
-                        <Button 
+                        <ToggleButton 
                             Margin="0 5 0 5" 
                             Content="СОРЕВНОВАНИЯ" 
                             Style="{StaticResource TextButton}"
                             x:Name="CompetitionListBitton"
                             Click="CompetitionListBitton_Click"/>
-                        <Button 
+                        <ToggleButton 
                             Margin="0 5 0 0"  
                             Content="ЛЕНТА" 
                             Style="{StaticResource TextButton}"
