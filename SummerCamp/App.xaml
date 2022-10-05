@@ -19,6 +19,7 @@
         <Style TargetType="Page" x:Key="StylePage">
             <Setter Property="Height" Value="628"/>
             <Setter Property="Width" Value="750"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle"/>
         </Style>
         <!--#endregion-->
         <!--#region Button-->
@@ -143,7 +144,8 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Foreground" Value="#cccccc"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="MaxLength" Value="35"/>
             <Setter Property="CaretBrush" Value="#cccccc"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Setter Property="FontSize" Value="20"/>
