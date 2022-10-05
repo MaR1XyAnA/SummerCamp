@@ -23,6 +23,15 @@ namespace SummerCamp.ViewFolder.PageFolder
             InitializeComponent();
             AppConnectDataBase.DataBase = new ModelFolder.SummerCampDataBaseEntities();
             StudentsListListBox.ItemsSource = AppConnectDataBase.DataBase.StudentsTables.ToList();
+            GroupComboBox.ItemsSource = AppConnectDataBase.DataBase.GroupTables.ToList();
+            CompetitionComboBox.ItemsSource = AppConnectDataBase.DataBase.CompetitionTables.ToList();
+        }
+
+        private void NewStudentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewStudentsBorder.Visibility = Visibility.Visible;
+            NewStudentsButton.Visibility = Visibility.Collapsed;
+            StudentsListListBox.Visibility = Visibility.Collapsed;
         }
     }
 }

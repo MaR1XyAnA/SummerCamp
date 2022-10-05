@@ -9,6 +9,8 @@
     <StackPanel>
         <StackPanel Margin="20">
             <Button 
+                x:Name="NewStudentsButton"
+                Click="NewStudentsButton_Click"
                 Height="50"
                 Width="230" 
                 Margin="10"
@@ -16,7 +18,7 @@
                 Content="ДОБАВИТЬ СТУДЕНТА"/>
         </StackPanel>
     <ListBox
-        Visibility="Collapsed"
+        Visibility="Visible"
         VirtualizingPanel.ScrollUnit="Pixel"
         x:Name="StudentsListListBox"
         Background="#19443B50"
@@ -114,51 +116,75 @@
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Vertical">
-            <StackPanel Margin="10 0 0 0">
-                <TextBlock 
-                    Style="{StaticResource InfoDataBaseFolse}"
-                    Text="ФИО:"/>
-                <TextBox 
-                    Height="30" 
-                    Width="350" 
-                    Margin="0 5 0 5"/>
-                <TextBox 
-                    Height="30"
-                    Width="350"
-                    Margin="0 5 0 5"/>
-                <TextBox
-                    Height="30"
-                    Width="350"
-                    Margin="0 5 0 0"/>
+        <Border 
+            CornerRadius="15" 
+            Background="#4C443B50"
+            BorderBrush="Transparent" 
+            x:Name="NewStudentsBorder" 
+            Visibility="Collapsed" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center">
+            <StackPanel Margin="20" Orientation="Vertical">
+                <StackPanel Margin="10 0 0 0">
+                    <TextBlock 
+                        Style="{StaticResource InfoDataBaseFolse}"
+                        Text="ФИО:"/>
+                    <TextBox 
+                        Height="30" 
+                        Width="350" 
+                        Margin="0 5 0 5"/>
+                    <TextBox 
+                        Height="30"
+                        Width="350"
+                        Margin="0 5 0 5"/>
+                    <TextBox
+                        Height="30"
+                        Width="350"
+                        Margin="0 5 0 0"/>
+                </StackPanel>
+                <StackPanel Margin="10 10 0 0">
+                    <TextBlock 
+                        Style="{StaticResource InfoDataBaseFolse}"
+                        Text="ГРУППА:"/>
+                    <ComboBox 
+                        HorizontalAlignment="Left"
+                        Name="GroupComboBox"
+                        DisplayMemberPath="NameGroup"
+                        Height="30" 
+                        Width="240" 
+                        Margin="0 5 0 5"/>
+                    <TextBlock 
+                        Margin="0 18.1 0 0"
+                        Style="{StaticResource InfoDataBaseFolse}"
+                        Text="СПЕЦИАЛИЗАЦИЯ:"/>
+                    <ComboBox
+                        HorizontalAlignment="Left"
+                        Name="CompetitionComboBox"
+                        DisplayMemberPath="NameCompetition"
+                        Height="30"
+                        Width="240"
+                        Margin="0 5 0 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 10 0 10">
+                    <StackPanel>
+                        <TextBlock 
+                            Style="{StaticResource InfoDataBaseFolse}"
+                            Text="БАЛЛЫ:"/>
+                        <TextBox 
+                            HorizontalAlignment="Left"
+                            Height="30" 
+                            Width="100" 
+                            Margin="0 5 0 0"/>
+                    </StackPanel>
+                    <Button 
+                        VerticalAlignment="Center"
+                        Height="45"
+                        Width="180" 
+                        Margin="80 19.58 0 0"
+                        HorizontalAlignment="Right"
+                        Content="ДОБАВИТЬ"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Margin="10 10 0 0">
-                <TextBlock 
-                    Style="{StaticResource InfoDataBaseFolse}"
-                    Text="ГРУППА:"/>
-                <ComboBox 
-                    Height="30" 
-                    Width="240" 
-                    Margin="0 5 0 5"/>
-                <TextBlock 
-                    Margin="0 18.1 0 0"
-                    Style="{StaticResource InfoDataBaseFolse}"
-                    Text="СПЕЦИАЛИЗАЦИЯ:"/>
-                <ComboBox
-                    Height="30"
-                    Width="240"
-                    Margin="0 5 0 0"/>
-            </StackPanel>
-            <StackPanel Margin="10 10 0 10">
-                <TextBlock 
-                    Style="{StaticResource InfoDataBaseFolse}"
-                    Text="БАЛЛЫ:"/>
-                <TextBox 
-                    HorizontalAlignment="Left"
-                    Height="30" 
-                    Width="100" 
-                    Margin="0 5 0 0"/>
-            </StackPanel>
-        </StackPanel>
+        </Border>
     </StackPanel>
 </Page>
