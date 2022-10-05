@@ -121,7 +121,7 @@
             Background="#4C443B50"
             BorderBrush="Transparent" 
             x:Name="NewStudentsBorder" 
-            Visibility="Visible" 
+            Visibility="Collapsed" 
             VerticalAlignment="Center" 
             HorizontalAlignment="Center">
             <StackPanel Margin="20" Orientation="Vertical">
