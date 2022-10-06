@@ -198,5 +198,16 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+        <Border
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Name="InfoBorder"
+            Style="{StaticResource InfoBorder}">
+            <TextBlock
+                Style="{StaticResource InfoDataBaseFolse}"
+                Text="213"
+                Margin="10 0 0 0"
+                Name="InfoTextBlock"/>
+        </Border>
     </Grid>
 </Page>

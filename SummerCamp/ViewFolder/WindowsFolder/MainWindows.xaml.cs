@@ -78,7 +78,7 @@ namespace SummerCamp.ViewFolder.WindowsFolder
             StudentsListButton.IsChecked = false;
             GroupListButton.IsChecked = false;
             TapeListButton.IsChecked = false;
-            //MainFrame.Navigate(new ());
+            MainFrame.Navigate(new CompetitionPage());
         }
 
         private void TapeListButton_Click(object sender, RoutedEventArgs e)

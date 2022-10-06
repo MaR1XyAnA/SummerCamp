@@ -1,19 +1,10 @@
 ﻿using SummerCamp.Content;
 using SummerCamp.ModelFolder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace SummerCamp.ViewFolder.PageFolder
 {
@@ -37,12 +28,19 @@ namespace SummerCamp.ViewFolder.PageFolder
         private void AddGroupButton_Click(object sender, RoutedEventArgs e)
         {
             string NameGroupString, SpecializationGroupString;
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.From = 60;
+            doubleAnimation.To = 0;
+            doubleAnimation.EasingFunction = new QuadraticEase();
+            doubleAnimation.Duration = TimeSpan.FromSeconds(5);
             NameGroupString = Convert.ToString(NameGroupTextBox.Text);
             SpecializationGroupString = Convert.ToString(SpecializationGroupComboBox.Text);
             if (AppConnectDataBase.DataBase.GroupTables.Count
                 (data => data.NameGroup == NameGroupString) > 0)
             {
-                MessageBox.Show("ДАННАЯ ГРУППА УЖЕ СУЩЕСТВУЕТ");
+                InfoBorder.BeginAnimation(HeightProperty, doubleAnimation);
+                InfoBorder.Visibility = Visibility.Visible;
+                InfoTextBlock.Text = "ДАННАЯ ГРУППА УЖЕ СУЩЕСТВУЕТ";
             }
             else
             {
@@ -55,16 +53,20 @@ namespace SummerCamp.ViewFolder.PageFolder
                     };
                     AppConnectDataBase.DataBase.GroupTables.Add(groupTables);
                     AppConnectDataBase.DataBase.SaveChanges();
-                    MessageBox.Show("ДАННЫЕ УСПЕШНО ДОБАВЛЕННЫ");
+                    InfoBorder.BeginAnimation(HeightProperty, doubleAnimation);
+                    InfoBorder.Visibility = Visibility.Visible;
+                    InfoTextBlock.Text = "ДАННЫЕ УСПЕШНО ДОБАВЛЕННЫ";
                     NewGroupBorder.Visibility = Visibility.Collapsed;
                     NewGRroupButton.Visibility = Visibility.Visible;
                     GroupListListBox.Visibility = Visibility.Visible;
                     NameGroupTextBox.Text = null;
                     SpecializationGroupComboBox.Text = null;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("" + ex);
+                    InfoBorder.BeginAnimation(HeightProperty, doubleAnimation);
+                    InfoBorder.Visibility = Visibility.Visible;
+                    InfoTextBlock.Text = "ЗАПОЛНЕТЕ ПОЛЯ";
                 }
             }
         }

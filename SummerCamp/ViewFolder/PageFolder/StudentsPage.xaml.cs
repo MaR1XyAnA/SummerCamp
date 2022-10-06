@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace SummerCamp.ViewFolder.PageFolder
 {
@@ -27,6 +28,11 @@ namespace SummerCamp.ViewFolder.PageFolder
 
         private void AddStudentsButton_Click(object sender, RoutedEventArgs e)
         {
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.From = 60;
+            doubleAnimation.To = 0;
+            doubleAnimation.EasingFunction = new QuadraticEase();
+            doubleAnimation.Duration = TimeSpan.FromSeconds(5);
             string SurnameString, NameString, MiddleNameString , NameGroupString, NameCompetitionString;
             decimal ScoresString;
             SurnameString = Convert.ToString(SurnameStudentsTextBox.Text);
@@ -38,7 +44,9 @@ namespace SummerCamp.ViewFolder.PageFolder
             if (AppConnectDataBase.DataBase.StudentsTables.Count(
                 data => data.SurnameStudents == SurnameString && data.NameStudents == NameString && data.MiddleName == MiddleNameString) > 0)
             {
-                MessageBox.Show("ДАННЫЙ СТУДЕНТ УЖЕ СУЩЕСТВУЕТ В БАЗЕ ДАНЫХ");
+                InfoBorder.BeginAnimation(HeightProperty, doubleAnimation);
+                InfoBorder.Visibility = Visibility.Visible;
+                InfoTextBlock.Text = "ДАННЫЙ СТУДЕНТ УЖЕ СУЩЕСТВУЕТ";
             }
             else
             {
@@ -61,14 +69,18 @@ namespace SummerCamp.ViewFolder.PageFolder
                     GroupStudentsComboBox.Text = null;
                     CompetitionStudentsComboBox.Text = null;
                     ScoresStudentsTextBox.Text = null;
-                    MessageBox.Show("УСПЕШНО СОХРАНЕНО");
+                    InfoBorder.BeginAnimation(HeightProperty, doubleAnimation);
+                    InfoBorder.Visibility = Visibility.Visible;
+                    InfoTextBlock.Text = "ДАННЫЕ УСПЕШНО ДОБАВЛЕННЫ";
                     NewStudentsBorder.Visibility = Visibility.Collapsed;
                     NewStudentsButton.Visibility = Visibility.Visible;
                     StudentsListListBox.Visibility = Visibility.Visible;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex + "");
+                    InfoBorder.BeginAnimation(HeightProperty, doubleAnimation);
+                    InfoBorder.Visibility = Visibility.Visible;
+                    InfoTextBlock.Text = "ЗАПОЛНЕТЕ ПОЛЯ";
                 }
             }
         }
