@@ -105,6 +105,9 @@
     <Compile Include="ModelFolder\sysdiagrams.cs">
       <DependentUpon>ModelCamp.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewFolder\PageFolder\GroupPage.xaml.cs">
+      <DependentUpon>GroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewFolder\PageFolder\PhotoPage.xaml.cs">
       <DependentUpon>PhotoPage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ViewFolder\PageFolder\GroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewFolder\PageFolder\PhotoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
