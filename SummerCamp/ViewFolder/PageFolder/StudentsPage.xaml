@@ -53,68 +53,68 @@
                                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                    Text="ФИО:" 
-                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                            Text="ФИО:" 
+                                            Style="{StaticResource InfoDataBaseFolse}"/>
                                         <TextBlock 
-                                    Margin="10 0 0 0"
-                                    Text="{Binding SurnameStudents}" 
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="10 0 0 0"
+                                            Text="{Binding SurnameStudents}" 
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                         <TextBlock 
-                                    Margin="5 0 0 0" 
-                                    Text="{Binding NameStudents}"
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="5 0 0 0" 
+                                            Text="{Binding NameStudents}"
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                         <TextBlock 
-                                    Margin="5 0 0 0" 
-                                    Text="{Binding MiddleName}" 
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="5 0 0 0" 
+                                            Text="{Binding MiddleName}" 
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                    Text="ГРУППА:" 
-                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                            Text="ГРУППА:" 
+                                            Style="{StaticResource InfoDataBaseFolse}"/>
                                         <TextBlock 
-                                    Margin="10 0 0 0"
-                                    Text="{Binding GroupTables.NameGroup}" 
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="10 0 0 0"
+                                            Text="{Binding GroupTables.NameGroup}" 
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                    Text="СПЕЦИАЛИЗАЦИЯ:" 
-                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                            Text="СПЕЦИАЛИЗАЦИЯ:" 
+                                            Style="{StaticResource InfoDataBaseFolse}"/>
                                         <TextBlock 
-                                    Margin="10 0 0 0"
-                                    Text="{Binding GroupTables.SpecializationTable.NameSpecialization}" 
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="10 0 0 0"
+                                            Text="{Binding GroupTables.SpecializationTable.NameSpecialization}" 
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                    Text="КОНКУРС:" 
-                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                            Text="КОНКУРС:" 
+                                            Style="{StaticResource InfoDataBaseFolse}"/>
                                         <TextBlock 
-                                    Margin="10 0 0 0"
-                                    Text="{Binding CompetitionTables.NameCompetition}" 
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="10 0 0 0"
+                                            Text="{Binding CompetitionTables.NameCompetition}" 
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock
-                                    Text="СТАТУС:" 
-                                    Style="{StaticResource InfoDataBaseFolse}"/>
+                                        Text="СТАТУС:" 
+                                        Style="{StaticResource InfoDataBaseFolse}"/>
                                         <TextBlock 
-                                    Margin="10 0 0 0"
-                                    Text="{Binding CompetitionTables.StatusTables.NameStatus}" 
-                                    Style="{StaticResource InfoDataBaseTrue}"/>
+                                            Margin="10 0 0 0"
+                                            Text="{Binding CompetitionTables.StatusTables.NameStatus}" 
+                                            Style="{StaticResource InfoDataBaseTrue}"/>
                                     </StackPanel>
                                 </StackPanel>
                                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
                                     <TextBlock
-                                Text="БАЛЛЫ:" 
-                                FontSize="30"
-                                Style="{StaticResource InfoDataBaseFolse}"/>
+                                        Text="БАЛЛЫ:" 
+                                        FontSize="30"
+                                        Style="{StaticResource InfoDataBaseFolse}"/>
                                     <TextBlock 
-                                Margin="10 0 0 0"
-                                FontSize="30"
-                                Text="{Binding Scores}" 
-                                Style="{StaticResource InfoDataBaseTrue}"/>
+                                        Margin="10 0 0 0"
+                                        FontSize="30"
+                                        Text="{Binding Scores}" 
+                                        Style="{StaticResource InfoDataBaseTrue}"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -172,7 +172,7 @@
                         DisplayMemberPath="NameCompetition"
                         Height="40"
                         Width="240"
-                        Margin="0 5 0 0"/>
+                        Margin="0 5 0 0" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10 10 0 10">
                     <StackPanel>

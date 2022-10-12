@@ -86,6 +86,7 @@
                         <ToggleButton 
                             Margin="0 5 0 0"  
                             Content="ЛЕНТА" 
+                            Visibility="Hidden"
                             Style="{StaticResource TextButton}"
                             x:Name="TapeListButton"
                             Click="TapeListButton_Click"/>
